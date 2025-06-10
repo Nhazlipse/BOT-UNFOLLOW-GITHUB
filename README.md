@@ -1,4 +1,4 @@
-# GitHub Relationship Manager
+# GitHub Unfollowers
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python Version](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
@@ -89,6 +89,7 @@ Once you have completed the installation and configuration steps, you can run th
 
 ```sh
 python main.py
+```
 
 The script will launch, display the main banner, and analyze your account. If it finds users who don't follow you back, it will present you with a menu to choose your next action:
 
