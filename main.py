@@ -197,9 +197,26 @@ class GitHubRelationshipManager:
             print(f"{Tampilan.INFO}Terima kasih telah menggunakan tool ini.")
             
 if __name__ == "__main__":
+    # 1. Muat kredensial dari file .env.local
     load_dotenv(dotenv_path=".env.local")
     USERNAME = os.getenv("GITHUB_USERNAME")
     TOKEN = os.getenv("GITHUB_TOKEN")
+
+    # 2. Lakukan validasi. Jika gagal, program berhenti.
+    if not USERNAME or not TOKEN:
+        print(f"{Tampilan.GAGAL}[FATAL] Variabel GITHUB_USERNAME atau GITHUB_TOKEN tidak ditemukan di .env.local")
+        sys.exit(1)
+    
+    # 3. JIKA VALIDASI BERHASIL, jalankan program utama.
+    # Kode ini sekarang berada di luar blok 'if' di atas.
+    try:
+        print(f"{Tampilan.INFO}Mencoba menjalankan manager untuk pengguna: {Tampilan.PROMPT}{USERNAME}{Tampilan.RESET}")
+        manager = GitHubRelationshipManager(USERNAME, TOKEN)
+        manager.jalankan()
+    except KeyboardInterrupt:
+        # Menangani jika pengguna menekan Ctrl+C
+        print(f"\n\n{Tampilan.PERINGATAN}Program dihentikan oleh pengguna.")
+        sys.exit(0)
 
     
     if not USERNAME or not TOKEN:
